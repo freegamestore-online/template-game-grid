@@ -1,8 +1,8 @@
-import { Shell } from "./components/Shell";
+import { GameShell, GameTopbar } from "@freegamestore/games";
 
 export default function App() {
   return (
-    <Shell>
+    <GameShell topbar={<GameTopbar title="APPNAME" score={0} />}><div className="flex flex-col items-center justify-center h-full gap-4">
       <h1
         className="text-3xl font-bold mb-4"
         style={{ fontFamily: "Fraunces, serif" }}
@@ -12,6 +12,6 @@ export default function App() {
       <p style={{ color: "var(--muted)" }}>
         Edit <code>src/App.tsx</code> to get started.
       </p>
-    </Shell>
+    </div></GameShell>
   );
 }
