@@ -1,15 +1,17 @@
 # Grid Game Template
 
-## Platform: FreeGameStore
-- Hosted on Cloudflare Pages (static SPA only)
-- ONE environment only (production). No dev/staging. Fix forward, no rollbacks.
-- Push to `main` auto-deploys to production via CF Pages
-- Domain: APPNAME.freegamestore.online
+Template for new FreeGameStore games. Replace `APPNAME` with your game id.
 
-## Tech Stack
-- TypeScript, React 19, Vite 6, Tailwind CSS 4.1, pnpm
-- No backend (standalone app) — all data in localStorage
-- Must work offline (PWA)
+- Subdomain: `APPNAME.freegamestore.online`
+- Dev: `pnpm install && pnpm dev`
+- Build: `pnpm build`
+- Deploy: `git push origin main` (auto-deploys via Cloudflare Pages)
+
+Free, MIT-licensed, no tracking. For platform conventions, read
+https://raw.githubusercontent.com/freeappstore-online/freeappstore/main/SKILLS.md
+before writing or changing anything.
+
+---
 
 ## Template Purpose
 This template is for building grid-based games such as:
@@ -40,28 +42,3 @@ This template is for building grid-based games such as:
 - Score display with Fraunces font
 - Glass-effect score panel
 - Dark mode via prefers-color-scheme (no toggle)
-
-## Brand Guidelines
-- Fonts: Manrope (body) + Fraunces (display)
-- Follow CSS variables in index.css for colors
-- Border radius: 0.5rem cells, 1.25rem cards, 0.75rem buttons
-- Dark mode via prefers-color-scheme (no toggle)
-
-## Development
-- `pnpm dev` — start dev server
-- `pnpm build` — production build
-- `pnpm typecheck` — verify types
-
-## Rules
-- No analytics, no tracking, no cookies
-- All user data in localStorage only
-- App must work offline after first load
-- Include "Part of FreeGameStore" link
-- MIT license
-
-## Platform Docs & Publishing
-- **Full AI guide:** https://raw.githubusercontent.com/freeappstore-online/freeappstore/main/SKILLS.md
-- **Store registry:** ~/dev/fgs/freegamestore/registry.json (add game here to list on store)
-- **Store site:** ~/dev/fgs/freegamestore/ (auto-deploys on push)
-- **Deploy:** Push to main auto-deploys via GitHub Actions. No manual steps needed.
-- **DNS/domains:** See SKILLS.md for CF API commands
