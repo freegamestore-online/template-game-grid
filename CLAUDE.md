@@ -1,6 +1,6 @@
 # Grid Game Template
 
-Template for new FreeGameStore games. Replace `APPNAME` with your game id.
+A free game on FreeGameStore.
 
 - Subdomain: `APPNAME.freegamestore.online`
 - Dev: `pnpm install && pnpm dev`
