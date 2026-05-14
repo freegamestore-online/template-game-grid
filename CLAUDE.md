@@ -60,7 +60,7 @@ This template is for building grid-based games such as:
 - MIT license
 
 ## Platform Docs & Publishing
-- **Full AI guide:** https://raw.githubusercontent.com/freeappstore-online/ops/main/SKILLS.md
+- **Full AI guide:** https://raw.githubusercontent.com/freeappstore-online/freeappstore/main/SKILLS.md
 - **Store registry:** ~/dev/fgs/infra/freegamestore/registry.json (add game here to list on store)
 - **Store site:** ~/dev/fgs/infra/freegamestore/ (auto-deploys on push)
 - **Deploy:** Push to main auto-deploys via GitHub Actions. No manual steps needed.
