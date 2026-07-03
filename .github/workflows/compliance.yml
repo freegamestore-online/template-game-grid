@@ -33,9 +33,13 @@ jobs:
 
       - name: No tracking
         run: |
-          FORBIDDEN="google-analytics|gtag|amplitude|mixpanel|segment|hotjar|plausible|posthog"
-          ! grep -rE "$FORBIDDEN" web/src/ 2>/dev/null
-          ! grep -E "$FORBIDDEN" web/package.json 2>/dev/null
+          # Match real tracking SDK usage, not bare English words. "amplitude"
+          # (audio), "segment" (geometry) and "track" are legitimate game code;
+          # flag only actual analytics calls/hosts in source + tracking deps.
+          SRC="google-analytics\.com|googletagmanager|gtag[[:space:]]*\(|mixpanel|segment\.(com|io)|segmentio|hotjar|plausible\.io|posthog|amplitude\.(com|getInstance|init)"
+          ! grep -rE "$SRC" web/src/ 2>/dev/null
+          PKG="mixpanel|posthog-js|@amplitude/|amplitude-js|@segment/|analytics-node|plausible-tracker|react-ga|@hotjar|hotjar-browser|google-analytics"
+          ! grep -E "\"($PKG)" web/package.json 2>/dev/null
 
       - name: Brand fonts
         run: |
