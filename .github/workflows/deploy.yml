@@ -78,6 +78,8 @@ jobs:
             "repo": "${GITHUB_REPOSITORY##*/}",
             "commit": "${GITHUB_SHA}",
             "shortCommit": "${GITHUB_SHA::7}",
+            "version": "${GITHUB_SHA::7}",
+            "source": "build-stamp",
             "ref": "${GITHUB_REF_NAME}",
             "runNumber": ${GITHUB_RUN_NUMBER},
             "runId": "${GITHUB_RUN_ID}",
