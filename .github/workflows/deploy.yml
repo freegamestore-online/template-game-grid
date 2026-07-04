@@ -68,6 +68,24 @@ jobs:
           test -d ./web/dist || { echo "::error::No build output at web/dist"; exit 1; }
           test -n "$(ls -A ./web/dist)" || { echo "::error::web/dist is empty"; exit 1; }
 
+      # Stamp deploy metadata so the live game answers "what version / when
+      # deployed" at <game>.freegamestore.online/version.json (host serves it
+      # with a revalidate cache so it stays fresh).
+      - name: Stamp version.json
+        run: |
+          cat > web/dist/version.json <<JSON
+          {
+            "repo": "${GITHUB_REPOSITORY##*/}",
+            "commit": "${GITHUB_SHA}",
+            "shortCommit": "${GITHUB_SHA::7}",
+            "ref": "${GITHUB_REF_NAME}",
+            "runNumber": ${GITHUB_RUN_NUMBER},
+            "runId": "${GITHUB_RUN_ID}",
+            "deployedAt": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          }
+          JSON
+          echo "version.json:"; cat web/dist/version.json
+
       - name: Upload to R2
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
