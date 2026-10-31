@@ -20,14 +20,12 @@ export function GameGrid<T>({
 
   return (
     <div
-      className="grid-game"
+      className="grid-game grid touch-manipulation justify-center"
+      /* dynamic: grid size, cell size and gap from props */
       style={{
-        display: "grid",
         gridTemplateRows: `repeat(${rows}, ${cellSize})`,
         gridTemplateColumns: `repeat(${cols}, ${cellSize})`,
         gap,
-        justifyContent: "center",
-        touchAction: "manipulation",
       }}
     >
       {grid.map((row, r) =>
@@ -39,16 +37,7 @@ export function GameGrid<T>({
               e.preventDefault();
               onCellClick?.(r, c);
             }}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: "0.5rem",
-              cursor: onCellClick ? "pointer" : "default",
-              transition: "transform 200ms ease, opacity 300ms ease",
-              userSelect: "none",
-              WebkitUserSelect: "none",
-            }}
+            className={`flex select-none items-center justify-center rounded-lg [transition:transform_200ms_ease,opacity_300ms_ease] ${onCellClick ? "cursor-pointer" : "cursor-default"}`}
           >
             {renderCell(value, r, c)}
           </div>
